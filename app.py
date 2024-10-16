@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for
 import numpy as np
+import os  # Import os to access environment variables
 
 app = Flask(__name__)
 
@@ -100,4 +101,4 @@ def index():
     return render_template('index.html', prediction=prediction, confidence=confidence)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))  # Updated line
